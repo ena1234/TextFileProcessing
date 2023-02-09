@@ -9,7 +9,7 @@ Scenario
 -	A customer needs a small utility for processing a text file.
 ![LAYOUT](images/layout.png)
 
-The user interface shall allow the user to specify the text file to be processed.
+- The user interface shall allow the user to specify the text file to be processed.
 ![CHOOSE_FILE](images/choose_file.png)
 Note: Hovering your mouse over a button or menu item can provide additional explanations and instructions on what to do.
 
