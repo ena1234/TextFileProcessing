@@ -33,6 +33,10 @@
             this.btn_Reset = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.btn_End = new System.Windows.Forms.Button();
+            this.fileNameLabel = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // btn_chooseFile
@@ -75,12 +79,26 @@
             this.btn_End.UseVisualStyleBackColor = false;
             this.btn_End.Click += new System.EventHandler(this.btn_End_Click);
             // 
+            // fileNameLabel
+            // 
+            this.fileNameLabel.AutoSize = true;
+            this.fileNameLabel.Location = new System.Drawing.Point(50, 30);
+            this.fileNameLabel.Name = "fileNameLabel";
+            this.fileNameLabel.Size = new System.Drawing.Size(0, 20);
+            this.fileNameLabel.TabIndex = 7;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.Empty;
+            this.toolTip1.ForeColor = System.Drawing.Color.Ivory;
+            // 
             // TextFileProcessorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(948, 524);
             this.Controls.Add(this.listView1);
+            this.Controls.Add(this.fileNameLabel);
             this.Controls.Add(this.btn_End);
             this.Controls.Add(this.btn_Reset);
             this.Controls.Add(this.btn_chooseFile);
@@ -97,6 +115,10 @@
         private System.Windows.Forms.Button btn_Reset;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btn_End;
+        private System.Windows.Forms.Label fileNameLabel;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
     }
 }
 

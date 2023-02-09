@@ -16,10 +16,13 @@ namespace TextFileProcessing
     public partial class TextFileProcessorForm : Form
     {
         private ProgressBar progressBar;
-
         public TextFileProcessorForm()
         {
             InitializeComponent();
+
+            toolTip1.SetToolTip(btn_Reset, "Reset the process of extracting and counting words from the text file.");
+            toolTip2.SetToolTip(btn_chooseFile, "Choose a text file to be processed.");
+            toolTip3.SetToolTip(btn_End, "End the process and close the application.");
 
             progressBar = new ProgressBar();
             // Manually set the location and size of the progress bar
@@ -28,13 +31,13 @@ namespace TextFileProcessing
             progressBar.Minimum = 0;
             progressBar.Maximum = 100;
             this.Controls.Add(progressBar);
-
         }
 
         // Create a CancellationTokenSource to allow the user to cancel the process
         private CancellationTokenSource cancellationTokenSource;
         private CancellationToken? cancellationToken;
 
+        private string _fileName;
 
 
         // Event handler for choosing a file
@@ -42,6 +45,9 @@ namespace TextFileProcessing
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
+            // Set the file filter for the open file dialog
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 1;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -49,7 +55,12 @@ namespace TextFileProcessing
 
                 // Get the file path from the open file dialog
                 String filePath = openFileDialog.FileName;
+                _fileName = openFileDialog.FileName;
 
+                // Get the file name from the file path
+                string fileName = Path.GetFileName(_fileName);
+                fileNameLabel.Text = fileName;
+                fileNameLabel.Location = new Point(120, 35);
                 try
                 {
                     // Run a task to process the text file
@@ -71,7 +82,6 @@ namespace TextFileProcessing
                             {
                                 progressBar.Value = progress;
                             });
-
                             if (wordCounts.ContainsKey(word))
                             {
                                 wordCounts[word]++;
@@ -117,6 +127,7 @@ namespace TextFileProcessing
             {
                 // Update UI
                 progressBar.Value = 0;
+                fileNameLabel.Text = "";
                 listView1.Clear();
                 MessageBox.Show("The process has been successfully reset.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
