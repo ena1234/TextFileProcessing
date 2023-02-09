@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -14,10 +15,19 @@ namespace TextFileProcessing
     // Form for processing a text file
     public partial class TextFileProcessorForm : Form
     {
+        private ProgressBar progressBar;
 
         public TextFileProcessorForm()
         {
             InitializeComponent();
+
+            progressBar = new ProgressBar();
+            // Manually set the location and size of the progress bar
+            progressBar.Location = new Point(310, 20);
+            progressBar.Size = new Size(300, 30);
+            progressBar.Minimum = 0;
+            progressBar.Maximum = 100;
+            this.Controls.Add(progressBar);
 
         }
 
@@ -56,6 +66,11 @@ namespace TextFileProcessing
                             }
 
                             count++;
+                            int progress = (int)((float)count / total * 100);
+                            this.Invoke((Action)delegate
+                            {
+                                progressBar.Value = progress;
+                            });
 
                             if (wordCounts.ContainsKey(word))
                             {
@@ -101,6 +116,7 @@ namespace TextFileProcessing
             this.Invoke((Action)delegate
             {
                 // Update UI
+                progressBar.Value = 0;
                 listView1.Clear();
                 MessageBox.Show("The process has been successfully reset.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
