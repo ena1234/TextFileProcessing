@@ -9,18 +9,18 @@ Scenario
 -	A customer needs a small utility for processing a text file.
 ![LAYOUT](images/layout.png)
 
-- The user interface shall allow the user to specify the text file to be processed.
+- The user interface allows the user to specify the text file to be processed.
 ![CHOOSE_FILE](images/choose_file.png)
-Note: Hovering your mouse over a button or menu item can provide additional explanations and instructions on what to do.
+Note: Hovering the cursor over a button or menu item can provide additional explanations and instructions on what to do.
 
--	This file shall be analyzed and all the words within the file shall be extracted and counted.
-As a result, a simple two-column table shall be shown.
-The first column shall contain words, while the second one shall contain their occurrences.
-The table shall be sorted by the number of occurrences.
-It shall be considered that large text files (~50 MB) will be processed, and as such, the user interface shall show a progress bar.
+-	This file will be analysed and all the words within the file will be extracted and counted.
+As a result, a simple two-column table will be shown.
+The first column contains words, while the second one contains their occurrences.
+The table will be sorted by the number of occurrences.
+It is considered that large text files (~50 MB) will be processed, and as such, the user interface shows a progress bar.
 ![PROCESS](images/process.png)
 
--	The user shall be able to cancel the processing of the file.
+-	The user is able to cancel the processing of the file.
 The user interface is responsive even during parsing the file so that the user can still interact with the application.
 ![RESET](images/reset.png)
 

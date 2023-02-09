@@ -25,6 +25,7 @@ namespace TextFileProcessing
             toolTip3.SetToolTip(btn_End, "End the process and close the application.");
 
             progressBar = new ProgressBar();
+
             // Manually set the location and size of the progress bar
             progressBar.Location = new Point(310, 20);
             progressBar.Size = new Size(300, 30);
@@ -61,9 +62,11 @@ namespace TextFileProcessing
                 string fileName = Path.GetFileName(_fileName);
                 fileNameLabel.Text = fileName;
                 fileNameLabel.Location = new Point(120, 35);
+
                 try
                 {
                     // Run a task to process the text file
+                    // Count the counts of each word, and update the progress bar
                     await Task.Run(() =>
                     {
                         string[] words = TextParsing.ExtractWords(filePath, ' ', cancellationToken); Dictionary<string, int> wordCounts = new Dictionary<string, int>();
@@ -101,6 +104,7 @@ namespace TextFileProcessing
                                 listView1.View = View.Details;
                                 listView1.Columns.Add("Word", 150);
                                 listView1.Columns.Add("Occurrence", 150);
+
                                 // Add the word counts to the ListView
                                 foreach (var wordCount in sortedWordCounts)
                                 {
